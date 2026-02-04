@@ -8,7 +8,7 @@ html {
   
 
 * {
-    margin: 0;
+    margin: 10;
     padding: 0;
     box-sizing: border-box;
   }
@@ -38,20 +38,17 @@ html {
   }
   
   /* HERO */
-.hero {
-    height: 100vh;
+  .hero {
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
   
     display: flex;
     align-items: center;
   
-    background: linear-gradient(
-      135deg,
-      #0f172a,
-      #020617
-    );
+    background: linear-gradient(135deg, #0f172a, #020617);
   }
+  
   
   /* glow pemanis biar ga monoton */
   .hero::before {
@@ -80,31 +77,28 @@ html {
   
   .hero-text {
     position: relative;
-    left: 8%;
-    max-width: 680px;
+    margin-left: 8%;
+    max-width: 720px;
     z-index: 2;
   }
   
+  
   .hero h1 {
-    font-size: 64px;
+    font-size: clamp(48px, 6vw, 72px);
     font-weight: 900;
     letter-spacing: 1px;
   }
   
   .hero-role {
-    font-size: 26px;
-    font-weight: 600;
-    opacity: .9;
-    margin-top: 10px;
+    font-size: 24px;
+    margin-top: 12px;
   }
-  
   
   .hero p {
-    margin: 20px 0 28px;
-    font-size: 20px;
-    opacity: .85;
-    line-height: 1.5;
+    font-size: 18px;
+    max-width: 600px;
   }
+  
   
   .btn {
     display: inline-block;
@@ -189,6 +183,7 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
+    padding: 120px 8%;
     align-items: center;
   }
   
@@ -212,68 +207,68 @@ html {
   }
   
   /* CTA */
-  .cta {
-    text-align: center;
-    padding: 140px 20px;
-  }
-  
-  .cta h2 {
-    font-size: 42px;
-    font-weight: 800;
-  }
-  
-  .cta p {
-    max-width: 520px;
-    margin: 16px auto 60px;
-    opacity: 0.75;
-    line-height: 1.7;
-  }
-  
-  /* CONTACT GRID */
-  .contact-grid {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    flex-wrap: wrap;
-  }
-  
-  /* CONTACT CARD */
-  .contact-card {
-    width: 140px;
-    height: 140px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-  
-    text-decoration: none;
-    color: white;
-  
-    transition: 0.35s ease;
-    backdrop-filter: blur(8px);
-  }
-  
-  .contact-card img {
-    width: 32px;
-  }
-  
-  .contact-card span {
-    font-size: 14px;
-    opacity: 0.8;
-  }
-  
-  /* HOVER EFFECT */
-  .contact-card:hover {
-    transform: translateY(-8px) scale(1.05);
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  }
-  
+.cta {
+  text-align: center;
+  padding: 140px 20px;
+}
+
+.cta h2 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.cta p {
+  max-width: 520px;
+  margin: 16px auto 60px;
+  opacity: 0.75;
+  line-height: 1.7;
+}
+
+/* CONTACT GRID */
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+/* CONTACT CARD */
+.contact-card {
+  width: 140px;
+  height: 140px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  text-decoration: none;
+  color: white;
+
+  transition: 0.35s ease;
+  backdrop-filter: blur(8px);
+}
+
+.contact-card img {
+  width: 32px;
+}
+
+.contact-card span {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* HOVER EFFECT */
+.contact-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
   
   
   .poster-section {
@@ -379,6 +374,7 @@ html {
     display: grid;
     grid-template-columns: 1.1fr .9fr;
     gap: 60px;
+    padding: 120px 8%;
     align-items: center;
     background: #0e0e0e;
   }
@@ -431,7 +427,7 @@ html {
   .work h2 {
     text-align: center;
     font-size: 36px;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
   }
   
   
@@ -489,5 +485,92 @@ html {
   
   .marquee-track.paused {
     animation-play-state: paused;
+  }
+  
+  @media (max-width: 768px) {
+
+    .about {
+      grid-template-columns: 1fr;
+    }
+  
+    
+  .about-right {
+    order: -1; /* FOTO PINDAH KE ATAS */
+    margin-bottom: 24px;
+  }
+
+    .about-right img {
+      width: 180px;
+    margin: 0 auto;
+    display: block;
+    }
+  
+    .about-left p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+  
+    .about-points div {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+
+    .cap-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  
+    .cap-card {
+      padding: 20px 16px;
+      border-radius: 18px;
+    }
+  
+    .cap-card h3 {
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+  
+    .cap-card p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+  
+  @media (max-width: 768px) {
+
+    .project {
+      grid-template-columns: 1fr;
+      padding: 80px 20px;
+      gap: 24px;
+    }
+  
+    .project img {
+      width: 100%;
+      border-radius: 18px;
+    }
+  
+    /* RESET reverse di mobile */
+    .project.reverse {
+      direction: ltr;
+    }
+  
+    .project-text h2 {
+      font-size: 22px;
+    }
+  
+    .project-text p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
   }
   
