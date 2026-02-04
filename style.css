@@ -1,0 +1,493 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+  section {
+    scroll-margin-top: 110px;
+  }
+  
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Inter, sans-serif;
+    background: #0b0b0b;
+    color: white;
+  }
+  
+  /* NAV */
+  .nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 24px;
+  }
+  
+  /* HERO */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+  
+    display: flex;
+    align-items: center;
+  
+    background: linear-gradient(
+      135deg,
+      #0f172a,
+      #020617
+    );
+  }
+  
+  /* glow pemanis biar ga monoton */
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: #7c3aed;
+    filter: blur(160px);
+    opacity: .18;
+    right: -150px;
+    top: -120px;
+  }
+  
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: #22d3ee;
+    filter: blur(160px);
+    opacity: .12;
+    left: -120px;
+    bottom: -120px;
+  }
+  
+  .hero-text {
+    position: relative;
+    left: 8%;
+    max-width: 680px;
+    z-index: 2;
+  }
+  
+  .hero h1 {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+  
+  .hero-role {
+    font-size: 26px;
+    font-weight: 600;
+    opacity: .9;
+    margin-top: 10px;
+  }
+  
+  
+  .hero p {
+    margin: 20px 0 28px;
+    font-size: 20px;
+    opacity: .85;
+    line-height: 1.5;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 999px;
+    transition: .25s;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  
+  /* SECTION BASE */
+  section {
+    padding: 120px 8%;
+  }
+  
+  /* CAPABILITIES */
+  .capabilities {
+    background: linear-gradient(180deg,#0f0f0f,#0a0a0a);
+    text-align: center;
+  }
+  
+  .cap-grid {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 28px;
+  }
+  
+  .cap-card {
+    background: linear-gradient(145deg,#1a1a1a,#111);
+    padding: 34px 26px;
+    border-radius: 22px;
+    transition: .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cap-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top,
+                rgba(255,255,255,.08),
+                transparent 60%);
+    opacity: 0;
+    transition: .3s;
+  }
+  
+  .cap-card:hover::after {
+    opacity: 1;
+  }
+  
+  .cap-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .cap-icon {
+    font-size: 36px;
+    margin-bottom: 14px;
+  }
+  
+  .cap-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .cap-card p {
+    font-size: 14px;
+    opacity: .7;
+    line-height: 1.5;
+  }
+  
+  /* PROJECT */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .project img {
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  .project.reverse {
+    direction: rtl;
+  }
+  
+  .project.reverse * {
+    direction: ltr;
+  }
+  
+  /* TOOLS */
+  .tools {
+    text-align: center;
+    background: #111;
+  }
+  
+  /* CTA */
+  .cta {
+    text-align: center;
+    padding: 140px 20px;
+  }
+  
+  .cta h2 {
+    font-size: 42px;
+    font-weight: 800;
+  }
+  
+  .cta p {
+    max-width: 520px;
+    margin: 16px auto 60px;
+    opacity: 0.75;
+    line-height: 1.7;
+  }
+  
+  /* CONTACT GRID */
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  
+  /* CONTACT CARD */
+  .contact-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  
+    text-decoration: none;
+    color: white;
+  
+    transition: 0.35s ease;
+    backdrop-filter: blur(8px);
+  }
+  
+  .contact-card img {
+    width: 32px;
+  }
+  
+  .contact-card span {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  /* HOVER EFFECT */
+  .contact-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  
+  
+  
+  .poster-section {
+    background: #0f0f0f;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .poster-section h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  
+  
+  .poster-track img {
+    height: 320px;
+    width: auto;
+    border-radius: 16px;
+    transition: transform .3s;
+    will-change: transform;
+  }
+  
+  .poster-track img:hover {
+    transform: scale(1.08);
+  }
+  
+  
+  .tools {
+    background: #111;
+    text-align: center;
+  }
+  
+  .tools h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .tool {
+    background: #1a1a1a;
+    padding: 24px;
+    border-radius: 18px;
+    transition: transform .25s, background .25s;
+  }
+  
+  .tool:hover {
+    transform: translateY(-6px);
+    background: #222;
+  }
+  
+  .tool img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 12px;
+  }
+  
+  .tool p {
+    font-size: 14px;
+    opacity: .85;
+  }
+  
+  .poster-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+  
+    display: none;
+    justify-content: center;
+    align-items: center;
+  
+    padding: 40px;
+    z-index: 9999;
+  }
+  
+  /* PENTING — ini ID harus sama dengan HTML kamu */
+  #modalImg {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 16px;
+    object-fit: contain;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  }
+  
+  
+  .poster-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 42px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .about {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 60px;
+    align-items: center;
+    background: #0e0e0e;
+  }
+  
+  .about h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .about p {
+    opacity: .8;
+    line-height: 1.7;
+    margin-bottom: 26px;
+    max-width: 560px;
+  }
+  
+  .about-points {
+    display: grid;
+    gap: 14px;
+  }
+  
+  .about-points div {
+    background: #1a1a1a;
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+  
+  .about-right img {
+    width: 100%;
+    border-radius: 22px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.5);
+  }
+  
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: .8s ease;
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .work {
+    padding: 120px 0;
+  }
+  
+  .work h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  
+  
+  /* container */
+  .marquee {
+    overflow: hidden;
+    margin: 30px 0;
+  }
+  
+  /* track */
+  .marquee-track {
+    display: flex;
+    gap: 28px;
+    width: max-content;
+    animation: scroll-left 35s linear infinite;
+    will-change: transform;
+  }
+  
+  /* reverse arah */
+  .marquee-reverse .marquee-track {
+    animation: scroll-right 40s linear infinite;
+  }
+  
+  
+  /* poster */
+  .marquee img {
+    height: 260px;
+    width: 200px;
+    border-radius: 14px;
+    object-fit: cover;
+    transition: .3s;
+    cursor: pointer;
+  }
+  
+  .marquee img:hover {
+    transform: scale(1.06);
+  }
+  
+  /* animasi */
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-1800px); }
+  }
+  
+  @keyframes scroll-right {
+    from { transform: translateX(-1800px); }
+    to { transform: translateX(0); }
+  }  
+  
+  .poster-item {
+    pointer-events: auto;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .marquee-track.paused {
+    animation-play-state: paused;
+  }
+  
