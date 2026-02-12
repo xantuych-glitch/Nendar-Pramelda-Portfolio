@@ -13,18 +13,65 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+  <!-- FLOATING ASSETS -->
+<div class="floating-assets">
+  <img src="assets/ilustrasi/komputer.png" class="float f1">
+  <img src="assets/ilustrasi/headphone.png" class="float f2">
+  <img src="assets/ilustrasi/microphone.png" class="float f3">
+  <img src="assets/ilustrasi/mouse.png" class="float f4">
+  <img src="assets/ilustrasi/vs.png" class="float f5">
+  <img src="assets/ilustrasi/pad.png" class="float f6">
+</div>
+
+<div class="floating-random"></div>
 
 <!-- NAVBAR -->
 <nav class="nav">
-    <div class="logo"></div>
-  
-    <div class="nav-links">
-      <a href="#work">Projects</a>
-      <a href="#about">About Me</a>
-      <a href="#contact">Contact</a>
+  <div class="logo">NP</div>
+
+  <div class="nav-links">
+    <a href="#work">Projects</a>
+    <a href="#about">About Me</a>
+    <a href="#contact">Contact</a>
+
+    
+    <div class="music-player">
+
+      <button id="prevBtn" class="music-btn-nav">
+        <img src="assets/icons/prev.png">
+      </button>
+      
+      <button id="playBtn" class="music-btn-nav">
+        <img id="playIcon" src="assets/icons/play.png">
+      </button>
+      
+      <button id="nextBtn" class="music-btn-nav">
+        <img src="assets/icons/next.png">
+      </button>
+      
+      
+    
+      <div class="track-info">
+        <div class="track-title" id="trackTitle">No Song</div>
+        <div class="time">
+          <span id="currentTime">0:00</span> /
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+    
+      <input type="range" id="progressBar" value="0" min="0" max="100">
+    
     </div>
-  </nav>
+    
+    <audio id="audio"></audio>
+    
+    
+
+  </div>
+</nav>
+
   
   
   <!-- HERO -->
@@ -43,6 +90,7 @@
         </p>
       
         <a href="#work" class="btn">View Projects</a>
+        <a href="cv.html" class="btn btn-outline">View CV</a>
       </div>
       
   
@@ -51,34 +99,36 @@
   
   <!-- ABOUT -->
   <section class="about reveal" id="about">
-  
-    <div class="about-left">
+
+    <div class="about-full">
   
       <h2>About Me</h2>
   
       <p>
-        Graphic Designer with a background in illustration and pattern design.
-        Experienced as a batik asset illustrator during an internship at
-        CV Batik Papua Indonesia.
-        
-        Currently pursuing a D4 degree in Business and Retail Management
-        at Politeknik STIBISNIS Tegal, while working as a freelance graphic designer.
-        I use AI-powered tools to improve creative efficiency and visual quality,
-        with hands-on experience in print production.
+        I am a Graphic Designer with a strong foundation in illustration,
+        pattern design, and print production. My creative journey includes
+        hands-on experience as a batik asset illustrator during an internship
+        at CV Batik Papua Indonesia, where I developed visual concepts and
+        production‑ready artwork.
+      </p>
+  
+      <p>
+        Currently, I am pursuing a D4 degree in Business and Retail Management
+        at Politeknik STIBISNIS Tegal while actively working as a freelance
+        graphic designer. I specialize in combining visual storytelling with
+        AI‑assisted creative workflows to deliver efficient, modern, and
+        impactful design solutions across digital and print media.
       </p>
   
       <div class="about-points">
         <div>Illustration & Pattern Specialist</div>
         <div>Print Production Experience</div>
-        <div>AI-Assisted Creative Workflow</div>
-        <div>Active Freelance Designer</div>
+        <div>AI‑Assisted Creative Workflow</div>
+        <div>Active Freelance Graphic Designer</div>
+        <div>Visual Branding & Promotional Design</div>
+        <div>Concept‑Driven Poster Exploration</div>
       </div>
   
-    </div>
-  
-  
-    <div class="about-right">
-      <img src="assets/profile.jpg" alt="profile photo">
     </div>
   
   </section>
@@ -127,7 +177,7 @@
             <img src="assets/ANTA KAI 2.jpg" class="poster-item">
             <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png" class="poster-item">
             <img src="assets/ASDASDADS.jpg" class="poster-item">
-            <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item"
+            <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item">
             <img src="assets/BEQU.jpg" class="poster-item">
             <img src="assets/COSPLAYER copy.jpg" class="poster-item">
             <img src="assets/DIMSUM copy.jpg" class="poster-item">
@@ -145,7 +195,7 @@
             <!-- DUPLIKAT -->
             <img src="assets/ANTA KAI 2.jpg" class="poster-item">
             <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png" class="poster-item">
-            <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item"
+            <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item">
             <img src="assets/ASDASDADS.jpg" class="poster-item">
             <img src="assets/BEQU.jpg" class="poster-item">
             <img src="assets/COSPLAYER copy.jpg" class="poster-item">
@@ -324,5 +374,10 @@
   
   <script src="script.js"></script>
 
+  <audio id="bgMusic" loop>
+    <source src="assets/music/Billie Eilish - BIRDS OF A FEATHER (Official Music Video) - BillieEilishVEVO.mp3" type="audio/mpeg">
+  </audio>
+  
+  
 </body>
 </html>
