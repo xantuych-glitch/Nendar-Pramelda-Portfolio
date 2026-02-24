@@ -1,204 +1,149 @@
-const posters = document.querySelectorAll(".poster-item");
-const modal = document.getElementById("posterModal");
-const modalImg = document.getElementById("modalImg");
-const closeBtn = document.querySelector(".poster-close");
-const tracks = document.querySelectorAll(".marquee-track");
+/* ==============================
+   THEME SWITCHER
+============================== */
+const html = document.documentElement;
+const themeBtns = document.querySelectorAll('.theme-btn');
+
+// Load saved theme
+const savedTheme = localStorage.getItem('np-theme') || 'light';
+applyTheme(savedTheme);
+
+themeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const theme = btn.dataset.theme;
+    applyTheme(theme);
+    localStorage.setItem('np-theme', theme);
+  });
+});
+
+function applyTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  themeBtns.forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
+}
+
+
+/* ==============================
+   CURSOR SPLASH EFFECT
+============================== */
+const splashColors = {
+  light: ['rgba(26,26,46,0.12)', 'rgba(255,107,107,0.2)', 'rgba(78,205,196,0.2)', 'rgba(245,200,66,0.25)'],
+  dark:  ['rgba(245,200,66,0.2)', 'rgba(255,107,107,0.2)', 'rgba(78,205,196,0.2)', 'rgba(167,139,250,0.2)'],
+  rgb:   ['rgba(0,255,255,0.4)',  'rgba(255,0,255,0.4)',   'rgba(0,255,136,0.4)', 'rgba(255,100,0,0.35)'],
+};
+
+// Mouse move — trailing dots
+let lastMove = 0;
+document.addEventListener('mousemove', (e) => {
+  const now = Date.now();
+  if (now - lastMove < 60) return; // throttle
+  lastMove = now;
+  createTrail(e.clientX, e.clientY);
+});
+
+// Click — ripple splash
+document.addEventListener('click', (e) => {
+  createSplash(e.clientX, e.clientY, true);
+});
+
+// Touch support
+document.addEventListener('touchstart', (e) => {
+  const t = e.touches[0];
+  createSplash(t.clientX, t.clientY, true);
+}, { passive: true });
+
+document.addEventListener('touchmove', (e) => {
+  const t = e.touches[0];
+  createTrail(t.clientX, t.clientY);
+}, { passive: true });
+
+function getColor() {
+  const theme = html.getAttribute('data-theme') || 'light';
+  const palette = splashColors[theme] || splashColors.light;
+  return palette[Math.floor(Math.random() * palette.length)];
+}
+
+function createSplash(x, y, big) {
+  const el = document.createElement('div');
+  const size = big ? (60 + Math.random() * 60) : (20 + Math.random() * 20);
+  el.className = 'splash';
+  el.style.cssText = `
+    left: ${x - size / 2}px;
+    top: ${y - size / 2}px;
+    width: ${size}px;
+    height: ${size}px;
+    background: ${getColor()};
+  `;
+  document.body.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+}
+
+function createTrail(x, y) {
+  const el = document.createElement('div');
+  el.className = 'splash-move';
+  el.style.cssText = `
+    left: ${x}px;
+    top: ${y}px;
+    background: ${getColor()};
+  `;
+  document.body.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+}
+
+
+/* ==============================
+   SCROLL REVEAL
+============================== */
+const reveals = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+reveals.forEach(el => revealObserver.observe(el));
+
+
+/* ==============================
+   POSTER MODAL
+============================== */
+const modal      = document.getElementById('posterModal');
+const modalImg   = document.getElementById('modalImg');
+const modalClose = document.getElementById('modalClose');
+const posters    = document.querySelectorAll('.poster-item');
+const tracks     = document.querySelectorAll('.marquee-track');
 
 posters.forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-  
-      tracks.forEach(track => {
-        track.style.animationPlayState = "paused";
-      });
-    });
-  });  
-
-  function resumeTracks() {
-    tracks.forEach(track => {
-      track.style.animationPlayState = "running";
-    });
-  }
-  
-  closeBtn.onclick = () => {
-    modal.style.display = "none";
-    resumeTracks();
-  };
-  
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      resumeTracks();
-    }
-  };
-  
-
-const reveals = document.querySelectorAll(".reveal");
-
-function revealOnScroll() {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 80) {
-      el.classList.add("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-
-const floats = document.querySelectorAll(".float");
-
-window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY;
-
-  floats.forEach((el, i) => {
-    const speed = (i + 1) * 0.03;
-    el.style.transform = `translateY(${scrolled * speed}px)`;
+  img.addEventListener('click', () => {
+    modalImg.src = img.src;
+    modal.classList.add('open');
+    tracks.forEach(t => t.style.animationPlayState = 'paused');
   });
 });
 
-const container = document.querySelector(".floating-random");
-
-const images = [
-  "assets/ilustrasi/komputer.png",
-  "assets/ilustrasi/microphone.png",
-  "assets/ilustrasi/mouse.png",
-  "assets/ilustrasi/vs.png",
-  "assets/ilustrasi/pad.png",
-];
-
-// jumlah objek melayang
-for (let i = 0; i < 18; i++) {
-  const img = document.createElement("img");
-  img.src = images[Math.floor(Math.random() * images.length)];
-  img.className = "float-item";
-
-  // ukuran random
-  const size = Math.random() * 120 + 60;
-  img.style.width = size + "px";
-
-  // posisi awal random
-  img.style.left = Math.random() * 100 + "vw";
-  img.style.top = Math.random() * 120 + "vh";
-
-  // durasi gerak beda
-  const duration = Math.random() * 20 + 25;
-  img.style.animationDuration = duration + "s";
-
-  // delay random
-  img.style.animationDelay = Math.random() * 20 + "s";
-
-  // rotasi awal random
-  img.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-  container.appendChild(img);
+function closeModal() {
+  modal.classList.remove('open');
+  tracks.forEach(t => t.style.animationPlayState = 'running');
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const playBtnMobile = document.getElementById("playBtnMobile");
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-if (playBtnMobile) {
-  playBtnMobile.onclick = () => {
-    if (audio.paused) {
-      audio.play();
-    } else {
-      audio.pause();
-    }
-  };
-}
 
-  const audio = document.getElementById("audio");
-  const playBtn = document.getElementById("playBtn");
-  const playIcon = document.getElementById("playIcon");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const progressBar = document.getElementById("progressBar");
-  const trackTitle = document.getElementById("trackTitle");
-  const currentTimeEl = document.getElementById("currentTime");
-  const durationEl = document.getElementById("duration");
+/* ==============================
+   MOBILE NAV TOGGLE
+============================== */
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
 
-  const songs = [
-    {
-      title: "Birds of a Feather",
-      src: "assets/music/Billie Eilish - BIRDS OF A FEATHER (Official Music Video) - BillieEilishVEVO.mp3"
-    },
-
-    {
-      title: "Saturn",
-      src: "assets/music/SZA - Saturn - SZAVEVO.mp3"
-    },
-
-    {
-      title: "Pretty Eyes",
-      src: "assets/music/Pretty Eyes - zehdi.mp3"
-    },
-
-  ];
-
-  let songIndex = 0;
-
-  function loadSong(index) {
-    audio.src = songs[index].src;
-    trackTitle.textContent = songs[index].title;
-  }
-
-  loadSong(songIndex);
-
-  // ▶️ PLAY / PAUSE
-  playBtn.addEventListener("click", function () {
-    if (audio.paused) {
-      audio.play();
-      playIcon.src = "assets/icons/pause.png";
-    } else {
-      audio.pause();
-      playIcon.src = "assets/icons/play.png";
-    }
-  });
-
-  // ⏭ NEXT
-  nextBtn.addEventListener("click", function () {
-    songIndex = (songIndex + 1) % songs.length;
-    loadSong(songIndex);
-    audio.play();
-    playIcon.src = "assets/icons/pause.png";
-  });
-
-  audio.addEventListener("ended", function () {
-    songIndex = (songIndex + 1) % songs.length;
-    loadSong(songIndex);
-    audio.play();
-    playIcon.src = "assets/icons/pause.png";
-  });
-  
-  // ⏮ PREV
-  prevBtn.addEventListener("click", function () {
-    songIndex = (songIndex - 1 + songs.length) % songs.length;
-    loadSong(songIndex);
-    audio.play();
-    playIcon.src = "assets/icons/pause.png";
-  });
-
-  // PROGRESS
-  audio.addEventListener("timeupdate", function () {
-    const progress = (audio.currentTime / audio.duration) * 100;
-    progressBar.value = progress;
-
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-    durationEl.textContent = formatTime(audio.duration);
-  });
-
-  progressBar.addEventListener("input", function () {
-    audio.currentTime = (progressBar.value / 100) * audio.duration;
-  });
-
-  function formatTime(time) {
-    if (isNaN(time)) return "0:00";
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60).toString().padStart(2, "0");
-    return `${minutes}:${seconds}`;
-  }
-
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
 });
 
-
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
