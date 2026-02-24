@@ -1,211 +1,319 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV - Nendar Pramelda</title>
+  <title>CV — Nendar Pramelda</title>
+  <meta name="description" content="Curriculum vitae of Nendar Pramelda, Graphic Designer based in Brebes, Indonesia.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg:       #f7f5f2;
+      --surface:  #ffffff;
+      --text:     #1a1a1a;
+      --text-dim: #6a6a6a;
+      --accent:   #c9a96e;
+      --border:   #e8e4df;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 40px 20px;
-      color: #222;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px 24px 80px;
     }
 
-    .cv-container {
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
+    .cv-wrap {
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    h1 {
-  font-size: 56px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-}
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
 
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 6px;
-      font-size: 20px;
-      letter-spacing: 1px;
+    /* Header */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
     }
 
-    .grid {
+    .cv-header-info {}
+
+    .cv-name {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1.0;
+      color: var(--text);
+    }
+
+    .cv-role {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 10px;
+    }
+
+    .cv-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .cv-contacts a, .cv-contacts span {
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .cv-contacts a:hover { color: var(--accent); }
+
+    .cv-photo {
+      flex-shrink: 0;
+      width: 130px;
+      height: 165px;
+      object-fit: cover;
+      border-radius: 6px;
+      filter: grayscale(20%);
+    }
+
+    /* Grid */
+    .cv-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 40px;
+      gap: 64px;
     }
 
-    ul {
-      padding-left: 20px;
-      line-height: 1.7;
+    /* Sections */
+    .cv-section {
+      margin-bottom: 40px;
     }
 
-    .small {
+    .cv-section-title {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cv-section p {
       font-size: 14px;
-      opacity: 0.7;
+      color: var(--text-dim);
+      line-height: 1.75;
     }
 
-    .back-btn {
-      display: inline-block;
-      margin-top: 40px;
-      text-decoration: none;
-      padding: 10px 20px;
-      background: black;
-      color: white;
-      border-radius: 6px;
+    /* Entry (experience / education) */
+    .cv-entry {
+      margin-bottom: 28px;
     }
 
-    @media(max-width: 768px){
+    .cv-entry:last-child { margin-bottom: 0; }
 
-.grid{
-  grid-template-columns: 1fr;
-}
+    .cv-entry-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
 
-.cv-header {
-  flex-direction: column;
-  gap: 20px;
-}
+    .cv-entry-meta {
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
 
-.cv-header-right img {
-  width: 120px;
-  height: 150px;
-}
-}
+    .cv-entry ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
+    .cv-entry li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.6;
+    }
 
-    .cv-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 40px;
-}
+    .cv-entry li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
 
-.cv-header-left {
-  flex: 1;
-}
+    /* Skills tags */
+    .cv-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-.cv-header-right {
-  flex-shrink: 0;
-}
+    .cv-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-dim);
+    }
 
-.cv-header-right img {
-  width: 140px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.job-title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-top: 6px;
-  letter-spacing: 2px;
-  color: #444;
-}
-
-
+    @media (max-width: 768px) {
+      .cv-grid { grid-template-columns: 1fr; gap: 0; }
+      .cv-header { flex-direction: column-reverse; }
+      .cv-photo { width: 100px; height: 130px; }
+      .cv-name { font-size: 44px; }
+    }
   </style>
 </head>
 <body>
 
-<div class="cv-container">
+<div class="cv-wrap">
 
-    <div class="cv-header">
-        <div class="cv-header-left">
-          <h1>Nendar Pramelda</h1>
-          <p class="job-title">Graphic Designer</p>
-        </div>
-      
-        <div class="cv-header-right">
-          <img src="assets/CV/foto.jpg" alt="Nendar Pramelda">
-        </div>
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+  <header class="cv-header">
+    <div class="cv-header-info">
+      <h1 class="cv-name">Nendar<br>Pramelda</h1>
+      <p class="cv-role">Graphic Designer</p>
+      <div class="cv-contacts">
+        <a href="mailto:nendarpramelda2007@gmail.com">nendarpramelda2007@gmail.com</a>
+        <span>+62 896-6686-3079</span>
+        <span>Brebes, Jawa Tengah</span>
       </div>
-      
-      
+    </div>
+    <img src="assets/CV/foto.jpg" alt="Portrait photo of Nendar Pramelda" class="cv-photo">
+  </header>
 
+  <div class="cv-grid">
 
-  <div class="grid">
-
+    <!-- LEFT COLUMN -->
     <div>
-      <h2>About Me</h2>
-      <p>
-        Lulusan SMK Negeri 1 Brebes jurusan Desain dan Produksi Busana
-        dengan keterampilan dalam desain motif batik digital menggunakan
-        Procreate dan Adobe Photoshop. Memiliki pengalaman PKL di industri batik
-        serta saat ini bekerja di bidang jasa fotokopi.
-      </p>
+      <section class="cv-section">
+        <h2 class="cv-section-title">About</h2>
+        <p>
+          Graphic Designer with a foundation in illustration and pattern design, built through real production work in the batik industry. I combine traditional craft thinking with modern AI-assisted workflows, and currently pursue a D4 degree in Business & Retail Management while freelancing in visual design.
+        </p>
+      </section>
 
-      <h2>Experience</h2>
+      <section class="cv-section">
+        <h2 class="cv-section-title">Experience</h2>
 
-      <h3>Operator Fotocopy</h3>
-      <p class="small">Fotocopy Damai Putra | April 2025 - Sekarang</p>
-      <ul>
-        <li>Melayani pelanggan untuk fotokopi dan pencetakan dokumen.</li>
-        <li>Mengoperasikan mesin dengan presisi dan hasil konsisten.</li>
-        <li>Menjaga kerapihan area kerja.</li>
-      </ul>
+        <div class="cv-entry">
+          <p class="cv-entry-title">Operator &amp; Document Services</p>
+          <p class="cv-entry-meta">Fotocopy Damai Putra · April 2025 – Present</p>
+          <ul>
+            <li>Served customers for document copying and printing with precision and consistency.</li>
+            <li>Maintained equipment and workspace for efficient daily operations.</li>
+          </ul>
+        </div>
 
-      <h3>Siswa Praktik Kerja Lapangan</h3>
-      <p class="small">CV. Batik Papua Indonesia | Sept 2024 - Maret 2025</p>
-      <ul>
-        <li>Mendesain motif batik digital menggunakan Photoshop & Procreate.</li>
-        <li>Menghasilkan 10+ desain siap produksi.</li>
-        <li>Terlibat dalam proses industri & pengemasan.</li>
-      </ul>
+        <div class="cv-entry">
+          <p class="cv-entry-title">Batik Motif Designer (Internship)</p>
+          <p class="cv-entry-meta">CV. Batik Papua Indonesia · Sept 2024 – March 2025</p>
+          <ul>
+            <li>Designed 10+ production-ready digital batik motifs using Photoshop and Procreate.</li>
+            <li>Developed visual concepts rooted in traditional pattern grammar adapted for modern printing.</li>
+            <li>Participated in manufacturing and packaging processes from design to delivery.</li>
+          </ul>
+        </div>
+      </section>
 
+      <section class="cv-section">
+        <h2 class="cv-section-title">Education</h2>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">D4 Manajemen Bisnis &amp; Retail</p>
+          <p class="cv-entry-meta">Politeknik STIBISNIS Tegal · 2025 – Present</p>
+        </div>
+
+        <div class="cv-entry">
+          <p class="cv-entry-title">Desain &amp; Produksi Busana</p>
+          <p class="cv-entry-meta">SMK Negeri 1 Brebes · 2022 – 2025</p>
+        </div>
+      </section>
     </div>
 
+    <!-- RIGHT COLUMN -->
     <div>
+      <section class="cv-section">
+        <h2 class="cv-section-title">Design Skills</h2>
+        <div class="cv-tags">
+          <span class="cv-tag">Illustration</span>
+          <span class="cv-tag">Pattern Design</span>
+          <span class="cv-tag">Batik Motif</span>
+          <span class="cv-tag">Poster Design</span>
+          <span class="cv-tag">Layout Design</span>
+          <span class="cv-tag">Print Production</span>
+          <span class="cv-tag">Visual Concept</span>
+          <span class="cv-tag">AI-Assisted Workflow</span>
+        </div>
+      </section>
 
-      <h2>Contact</h2>
-      <p>HP : +62 896-6686-3079</p>
-      <p>Email : nendarpramelda2007@gmail.com</p>
-      <p>Alamat : Brebes, Jawa Tengah</p>
+      <section class="cv-section">
+        <h2 class="cv-section-title">Software</h2>
+        <div class="cv-tags">
+          <span class="cv-tag">Adobe Photoshop</span>
+          <span class="cv-tag">Procreate</span>
+          <span class="cv-tag">Adobe Illustrator</span>
+          <span class="cv-tag">CorelDraw</span>
+          <span class="cv-tag">Lightroom</span>
+          <span class="cv-tag">Canva</span>
+          <span class="cv-tag">Ibis Paint</span>
+        </div>
+      </section>
 
-      <h2>Education</h2>
-      <p><strong>Politeknik Stibisnis Tegal</strong><br>D4 Manajemen Bisnis & Retail (2025 - Sekarang)</p>
-      <p><strong>SMK Negeri 1 Brebes</strong><br>Desain & Produksi Busana (2022 - 2025)</p>
+      <section class="cv-section">
+        <h2 class="cv-section-title">Languages</h2>
+        <div class="cv-tags">
+          <span class="cv-tag">Indonesian (Native)</span>
+          <span class="cv-tag">English (Working)</span>
+        </div>
+      </section>
 
-      <h2>Skills</h2>
-      <ul>
-        <li>Illustration</li>
-        <li>Graphic Design</li>
-        <li>Batik Motif Design</li>
-        <li>Visual Concept Development</li>
-        <li>Layout Design</li>
-      </ul>
-
-      <h2>Software</h2>
-      <ul>
-        <li>Procreate</li>
-        <li>Adobe Photoshop</li>
-        <li>CorelDraw</li>
-        <li>Canva</li>
-        <li>Lightroom</li>
-        <li>ChatGPT</li>
-      </ul>
-
-      <h2>Language</h2>
-      <ul>
-        <li>Indonesia</li>
-        <li>English</li>
-      </ul>
-
+      <section class="cv-section">
+        <h2 class="cv-section-title">Contact</h2>
+        <p>Available for freelance collaborations and open to entry-level design opportunities.</p>
+      </section>
     </div>
 
   </div>
-
-  <a href="index.html" class="back-btn">← Back to Portfolio</a>
-
 </div>
 
 </body>
