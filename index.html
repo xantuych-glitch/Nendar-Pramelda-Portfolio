@@ -7,7 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Stylesheet asli (tidak diubah) -->
   <link rel="stylesheet" href="style.css">
+  <!-- Stylesheet tambahan untuk fitur baru -->
+  <link rel="stylesheet" href="additions.css">
 </head>
 <body>
 
@@ -38,7 +41,15 @@
     </div>
 
     <div class="nav-right">
-      <!-- Theme Toggle -->
+
+      <!-- FEATURE 4: Language Toggle EN / ID -->
+      <div class="lang-toggle" title="Switch language">
+        <button class="lang-btn active" data-lang="en" id="langEN">EN</button>
+        <div class="lang-divider"></div>
+        <button class="lang-btn" data-lang="id" id="langID">ID</button>
+      </div>
+
+      <!-- Theme Toggle (tidak diubah) -->
       <div class="theme-toggle" title="Switch theme">
         <button class="theme-btn t-light active" data-theme="light" title="Light mode">
           <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round">
@@ -58,10 +69,11 @@
       </div>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#capabilities">Skills</a></li>
-        <li><a href="#work">Projects</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#about"        data-en="About"    data-id="Tentang">About</a></li>
+        <li><a href="#capabilities" data-en="Skills"   data-id="Keahlian">Skills</a></li>
+        <li><a href="#work"         data-en="Projects" data-id="Proyek">Projects</a></li>
+        <li><a href="#services"     data-en="Services" data-id="Layanan">Services</a></li>
+        <li><a href="#contact" class="nav-cta" data-en="Contact" data-id="Kontak">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -71,10 +83,12 @@
     <div class="hero-left">
       <div class="hero-tag">
         <div class="hero-tag-dot"></div>
-        Available for freelance work
+        <span data-en="Available for freelance work" data-id="Tersedia untuk kerja lepas">Available for freelance work</span>
       </div>
       <h1>NENDAR<br><span class="highlight">PRAMELDA</span></h1>
-      <p class="hero-desc">
+      <p class="hero-desc"
+         data-en="Graphic Designer &amp; AI Explorer crafting impactful visual communication. Combining illustration, pattern design, and AI-assisted workflows to build modern design solutions."
+         data-id="Desainer Grafis &amp; AI Explorer yang menciptakan komunikasi visual berkesan. Menggabungkan ilustrasi, desain pola, dan alur kerja berbasis AI untuk solusi desain modern.">
         Graphic Designer &amp; AI Explorer crafting impactful visual communication.
         Combining illustration, pattern design, and AI-assisted workflows to build modern design solutions.
       </p>
@@ -84,7 +98,7 @@
             <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
             <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
           </svg>
-          View Projects
+          <span data-en="View Projects" data-id="Lihat Proyek">View Projects</span>
         </a>
         <a href="cv.html" class="btn btn-secondary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -92,11 +106,11 @@
             <polyline points="14 2 14 8 20 8"/>
             <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
           </svg>
-          View CV
+          <span data-en="View CV" data-id="Lihat CV">View CV</span>
         </a>
       </div>
       <div class="hero-scroll-hint">
-        <span>Scroll to explore</span>
+        <span data-en="Scroll to explore" data-id="Gulir untuk menjelajah">Scroll to explore</span>
         <span class="scroll-arrow">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
@@ -107,9 +121,9 @@
 
     <div class="hero-right">
       <div class="hero-card reveal">
-        <div class="hero-card-title">Experience</div>
+        <div class="hero-card-title" data-en="Experience" data-id="Pengalaman">Experience</div>
         <div class="hero-card-stat">10+</div>
-        <div class="hero-card-sub">Production-ready designs created</div>
+        <div class="hero-card-sub" data-en="Production-ready designs created" data-id="Desain siap produksi telah dibuat">Production-ready designs created</div>
       </div>
       <div class="hero-avatar-area">
         <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,13 +151,15 @@
   <section class="about reveal" id="about">
     <div class="section-label">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-      About Me
+      <span data-en="About Me" data-id="Tentang Saya">About Me</span>
     </div>
     <div class="about-grid">
       <div class="speech-bubble">
-        <h2>Hey There,<br>I'm Nendar.</h2>
-        <p>I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia.</p>
-        <p>Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design.</p>
+        <h2 data-en="Hey There,<br>I'm Nendar." data-id="Halo,<br>Saya Nendar.">Hey There,<br>I'm Nendar.</h2>
+        <p data-en="I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia."
+           data-id="Saya Desainer Grafis dengan dasar kuat dalam ilustrasi, desain pola, dan produksi cetak — termasuk pengalaman langsung ilustrasi aset batik di CV Batik Papua Indonesia.">I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia.</p>
+        <p data-en="Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design."
+           data-id="Saat ini menempuh pendidikan D4 Manajemen Bisnis dan Retail di Politeknik STIBISNIS Tegal, saya memadukan visual storytelling dengan alur kerja kreatif berbasis AI untuk menghasilkan desain yang efisien, modern, dan berdampak.">Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design.</p>
       </div>
       <div class="about-panels">
         <div class="about-panel reveal reveal-delay-1">
@@ -152,8 +168,8 @@
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/>
             </svg>
           </div>
-          <h3>Illustration &amp; Pattern Specialist</h3>
-          <p>Batik motifs &amp; digital illustration</p>
+          <h3 data-en="Illustration &amp; Pattern Specialist" data-id="Spesialis Ilustrasi &amp; Pola">Illustration &amp; Pattern Specialist</h3>
+          <p data-en="Batik motifs &amp; digital illustration" data-id="Motif batik &amp; ilustrasi digital">Batik motifs &amp; digital illustration</p>
         </div>
         <div class="about-panel reveal reveal-delay-2">
           <div class="about-panel-icon" style="background:#f0fff8;">
@@ -162,8 +178,8 @@
               <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <h3>Print Production Experience</h3>
-          <p>Production-ready artwork &amp; layouts</p>
+          <h3 data-en="Print Production Experience" data-id="Pengalaman Produksi Cetak">Print Production Experience</h3>
+          <p data-en="Production-ready artwork &amp; layouts" data-id="Karya &amp; tata letak siap produksi">Production-ready artwork &amp; layouts</p>
         </div>
         <div class="about-panel reveal reveal-delay-3">
           <div class="about-panel-icon" style="background:#fffbf0;">
@@ -172,8 +188,8 @@
               <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
             </svg>
           </div>
-          <h3>AI-Assisted Workflow</h3>
-          <p>Tools that speed up creative output</p>
+          <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
+          <p data-en="Tools that speed up creative output" data-id="Alat yang mempercepat output kreatif">Tools that speed up creative output</p>
         </div>
         <div class="about-panel reveal reveal-delay-4">
           <div class="about-panel-icon" style="background:#f5f0ff;">
@@ -182,8 +198,8 @@
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
             </svg>
           </div>
-          <h3>Active Freelancer</h3>
-          <p>Brand, poster &amp; campaign design</p>
+          <h3 data-en="Active Freelancer" data-id="Freelancer Aktif">Active Freelancer</h3>
+          <p data-en="Brand, poster &amp; campaign design" data-id="Desain brand, poster &amp; kampanye">Brand, poster &amp; campaign design</p>
         </div>
       </div>
     </div>
@@ -193,8 +209,8 @@
   <section class="capabilities reveal" id="capabilities">
     <div class="section-header">
       <div>
-        <div class="section-label">What I Do</div>
-        <h2 class="section-title">Core<br><em>Capabilities</em></h2>
+        <div class="section-label" data-en="What I Do" data-id="Yang Saya Kerjakan">What I Do</div>
+        <h2 class="section-title" data-en="Core<br><em>Capabilities</em>" data-id="Keahlian<br><em>Utama</em>">Core<br><em>Capabilities</em></h2>
       </div>
     </div>
     <div class="cap-grid">
@@ -206,8 +222,8 @@
             <path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>
           </svg>
         </div>
-        <h3>Illustration &amp; Pattern Design</h3>
-        <p>Illustration assets and pattern work, including intricate batik motifs and digital art.</p>
+        <h3 data-en="Illustration &amp; Pattern Design" data-id="Ilustrasi &amp; Desain Pola">Illustration &amp; Pattern Design</h3>
+        <p data-en="Illustration assets and pattern work, including intricate batik motifs and digital art." data-id="Aset ilustrasi dan karya pola, termasuk motif batik yang rumit dan seni digital.">Illustration assets and pattern work, including intricate batik motifs and digital art.</p>
       </div>
       <div class="cap-card reveal reveal-delay-2">
         <div class="cap-icon">
@@ -217,8 +233,8 @@
             <rect x="6" y="14" width="12" height="8" rx="1"/>
           </svg>
         </div>
-        <h3>Print Design Production</h3>
-        <p>Print-ready layouts with production awareness — from sizing to color separation.</p>
+        <h3 data-en="Print Design Production" data-id="Produksi Desain Cetak">Print Design Production</h3>
+        <p data-en="Print-ready layouts with production awareness — from sizing to color separation." data-id="Tata letak siap cetak dengan pemahaman produksi — dari ukuran hingga pemisahan warna.">Print-ready layouts with production awareness — from sizing to color separation.</p>
       </div>
       <div class="cap-card reveal reveal-delay-3">
         <div class="cap-icon">
@@ -228,8 +244,8 @@
             <line x1="12" y1="22.08" x2="12" y2="12"/>
           </svg>
         </div>
-        <h3>AI-Assisted Workflow</h3>
-        <p>Integrating AI tools to improve speed, creativity, and visual output quality.</p>
+        <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
+        <p data-en="Integrating AI tools to improve speed, creativity, and visual output quality." data-id="Mengintegrasikan alat AI untuk meningkatkan kecepatan, kreativitas, dan kualitas visual.">Integrating AI tools to improve speed, creativity, and visual output quality.</p>
       </div>
       <div class="cap-card reveal reveal-delay-4">
         <div class="cap-icon">
@@ -238,8 +254,8 @@
             <path d="M9 9h6M9 12h6M9 15h4"/>
           </svg>
         </div>
-        <h3>Freelance Visual Design</h3>
-        <p>Posters, promotional visuals, and campaign graphics for clients across industries.</p>
+        <h3 data-en="Freelance Visual Design" data-id="Desain Visual Freelance">Freelance Visual Design</h3>
+        <p data-en="Posters, promotional visuals, and campaign graphics for clients across industries." data-id="Poster, visual promosi, dan grafik kampanye untuk klien dari berbagai industri.">Posters, promotional visuals, and campaign graphics for clients across industries.</p>
       </div>
     </div>
   </section>
@@ -248,8 +264,8 @@
   <section class="projects" id="work">
     <div class="projects-header">
       <div>
-        <div class="section-label" style="background:var(--coral); border-color:var(--projects-title);">My Work</div>
-        <h2 class="section-title">Project<br><em>Gallery</em></h2>
+        <div class="section-label" style="background:var(--coral); border-color:var(--projects-title);" data-en="My Work" data-id="Karya Saya">My Work</div>
+        <h2 class="section-title" data-en="Project<br><em>Gallery</em>" data-id="Galeri<br><em>Proyek</em>">Project<br><em>Gallery</em></h2>
       </div>
     </div>
 
@@ -263,7 +279,7 @@
         <img src="assets/COSPLAYER copy.jpg"                            class="poster-item marquee-item" alt="Cosplayer">
         <img src="assets/DIMSUM copy.jpg"                               class="poster-item marquee-item" alt="Dimsum">
         <img src="assets/ESKRIM copy.jpg"                               class="poster-item marquee-item" alt="Ice Cream">
-        <img src="assets/TRIP_02.jpg "```                               class="poster-item marquee-item" alt="Trip">
+        <img src="assets/TRIP_02.jpg"                                   class="poster-item marquee-item" alt="Trip">
         <!-- duplicates -->
         <img src="assets/ANTA KAI 2.jpg"                                class="poster-item marquee-item" alt="Anta Kai">
         <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png"      class="poster-item marquee-item" alt="Project">
@@ -273,7 +289,7 @@
         <img src="assets/COSPLAYER copy.jpg"                            class="poster-item marquee-item" alt="Cosplayer">
         <img src="assets/DIMSUM copy.jpg"                               class="poster-item marquee-item" alt="Dimsum">
         <img src="assets/ESKRIM copy.jpg"                               class="poster-item marquee-item" alt="Ice Cream">
-        <img src="assets/TRIP_02.jpg "```                               class="poster-item marquee-item" alt="Trip">
+        <img src="assets/TRIP_02.jpg"                                   class="poster-item marquee-item" alt="Trip">
       </div>
     </div>
 
@@ -299,24 +315,26 @@
       </div>
     </div>
 
-    <!-- Featured Project Cards — aspek rasio tidak terpotong -->
+    <!-- Featured Project Cards -->
     <div class="project-cards">
       <div class="project-card reveal">
         <img src="assets/548903224_18090795742698267_4234607956614984106_n.jpg"
              class="project-card-img" alt="Manipulate Poster Design">
         <div class="project-card-body">
-          <span class="project-card-tag">Poster Design</span>
-          <h3>Manipulate Poster Design</h3>
-          <p>A conceptual poster exploration focused on visual manipulation — combining imagery, color contrast, and composition to create strong visual impact. Emphasizes mood, depth, and experimental layout.</p>
+          <span class="project-card-tag" data-en="Poster Design" data-id="Desain Poster">Poster Design</span>
+          <h3 data-en="Manipulate Poster Design" data-id="Desain Poster Manipulasi">Manipulate Poster Design</h3>
+          <p data-en="A conceptual poster exploration focused on visual manipulation — combining imagery, color contrast, and composition to create strong visual impact. Emphasizes mood, depth, and experimental layout."
+             data-id="Eksplorasi poster konseptual yang berfokus pada manipulasi visual — menggabungkan gambar, kontras warna, dan komposisi untuk menciptakan dampak visual yang kuat.">A conceptual poster exploration focused on visual manipulation — combining imagery, color contrast, and composition to create strong visual impact. Emphasizes mood, depth, and experimental layout.</p>
         </div>
       </div>
       <div class="project-card reveal reveal-delay-2">
         <img src="assets/REDMI-WATCH-5_02.jpg"
              class="project-card-img" alt="Minimalist Design Style">
         <div class="project-card-body">
-          <span class="project-card-tag">Product Visual</span>
-          <h3>Minimalist Design Style</h3>
-          <p>A clean, balanced layout using white space and simple typography. A neutral color palette with subtle contrasting accents highlights the product without excessive visual elements.</p>
+          <span class="project-card-tag" data-en="Product Visual" data-id="Visual Produk">Product Visual</span>
+          <h3 data-en="Minimalist Design Style" data-id="Gaya Desain Minimalis">Minimalist Design Style</h3>
+          <p data-en="A clean, balanced layout using white space and simple typography. A neutral color palette with subtle contrasting accents highlights the product without excessive visual elements."
+             data-id="Tata letak bersih dan seimbang menggunakan ruang putih dan tipografi sederhana. Palet warna netral dengan aksen kontras halus menonjolkan produk tanpa elemen visual berlebihan.">A clean, balanced layout using white space and simple typography. A neutral color palette with subtle contrasting accents highlights the product without excessive visual elements.</p>
         </div>
       </div>
     </div>
@@ -325,8 +343,8 @@
   <!-- TOOLS -->
   <section class="tools reveal" id="tools">
     <div class="section-header" style="text-align:center; flex-direction:column; align-items:center;">
-      <div class="section-label">My Arsenal</div>
-      <h2 class="section-title">Tools &amp; <em>Software</em></h2>
+      <div class="section-label" data-en="My Arsenal" data-id="Perangkat Saya">My Arsenal</div>
+      <h2 class="section-title" data-en="Tools &amp; <em>Software</em>" data-id="Alat &amp; <em>Perangkat Lunak</em>">Tools &amp; <em>Software</em></h2>
     </div>
     <div class="tools-grid">
       <div class="tool-card reveal reveal-delay-1"><img src="assets/tools/photoshop.png" alt="Photoshop"><span>Photoshop</span></div>
@@ -342,10 +360,120 @@
     </div>
   </section>
 
+  <!-- FEATURE 1: SERVICES SECTION -->
+  <section class="services reveal" id="services">
+    <div class="services-inner">
+      <div class="section-header" style="margin-bottom:0;">
+        <div>
+          <div class="section-label" data-en="What I Offer" data-id="Yang Saya Tawarkan">What I Offer</div>
+          <h2 class="section-title" data-en="My<br><em>Services</em>" data-id="Layanan<br><em>Saya</em>">My<br><em>Services</em></h2>
+        </div>
+      </div>
+      <div class="services-grid">
+
+        <!-- A: Graphic Design -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-card-icon" style="background:#fff0f0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+            </svg>
+          </div>
+          <h3 data-en="Graphic Design" data-id="Desain Grafis">Graphic Design</h3>
+          <ul>
+            <li data-en="Banner design" data-id="Desain banner">Banner design</li>
+            <li data-en="Poster design" data-id="Desain poster">Poster design</li>
+            <li data-en="Instagram feed layout" data-id="Tata letak feed Instagram">Instagram feed layout</li>
+            <li data-en="Promotional content" data-id="Konten promosi">Promotional content</li>
+          </ul>
+        </div>
+
+        <!-- B: Wedding Invitation -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-card-icon" style="background:#f0fff8;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 data-en="Wedding Invitation Design" data-id="Desain Undangan Pernikahan">Wedding Invitation Design</h3>
+          <ul>
+            <li data-en="Custom design tailored to your theme" data-id="Desain kustom sesuai tema Anda">Custom design tailored to your theme</li>
+            <li data-en="Print-ready files provided" data-id="File siap cetak disediakan">Print-ready files provided</li>
+            <li data-en="Revision support included" data-id="Dukungan revisi termasuk">Revision support included</li>
+          </ul>
+        </div>
+
+        <!-- C: Academic Assistance -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-card-icon" style="background:#fffbf0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+            </svg>
+          </div>
+          <h3 data-en="Academic Assistance" data-id="Bantuan Akademik">Academic Assistance</h3>
+          <ul>
+            <li data-en="Internship report editing" data-id="Editing laporan magang">Internship report editing</li>
+            <li data-en="Scientific paper formatting" data-id="Formatting karya ilmiah">Scientific paper formatting</li>
+            <li data-en="Document formatting and proofreading" data-id="Formatting dan proofreading dokumen">Document formatting and proofreading</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 2: PRIVATE LESSONS SECTION -->
+  <section class="lessons reveal" id="lessons">
+    <div class="lessons-inner">
+      <div class="lessons-box">
+        <div>
+          <div class="lessons-label" data-en="Brebes Area Only" data-id="Khusus Area Brebes">Brebes Area Only</div>
+          <h2 data-en="Private Computer<br>Lessons" data-id="Kursus Komputer<br>Privat">Private Computer<br>Lessons</h2>
+          <p class="lessons-subtitle"
+             data-en="Hands-on, one-on-one computer lessons for students from elementary through high school level. Home visit system available within the Brebes area."
+             data-id="Pelajaran komputer tatap muka untuk siswa dari SD hingga SMA. Tersedia sistem kunjungan rumah di area Brebes.">Hands-on, one-on-one computer lessons for students from elementary through high school level. Home visit system available within the Brebes area.</p>
+          <ul class="lessons-detail-list">
+            <li data-en="Microsoft Word, Excel, and PowerPoint" data-id="Microsoft Word, Excel, dan PowerPoint">Microsoft Word, Excel, and PowerPoint</li>
+            <li data-en="Basic graphic design fundamentals" data-id="Dasar-dasar desain grafis">Basic graphic design fundamentals</li>
+            <li data-en="Internet and digital literacy basics" data-id="Dasar literasi internet dan digital">Internet and digital literacy basics</li>
+            <li data-en="For Elementary to High School students" data-id="Untuk siswa SD hingga SMA">For Elementary to High School students</li>
+          </ul>
+          <a href="https://wa.me/6289666863079" target="_blank" rel="noopener" class="lessons-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span data-en="Enquire via WhatsApp" data-id="Tanya via WhatsApp">Enquire via WhatsApp</span>
+          </a>
+        </div>
+        <div class="lessons-meta">
+          <div class="lessons-meta-item">
+            <strong data-en="Target Students" data-id="Target Siswa">Target Students</strong>
+            <span data-en="Elementary School — High School" data-id="SD — SMA">Elementary School — High School</span>
+          </div>
+          <div class="lessons-meta-item">
+            <strong data-en="Location" data-id="Lokasi">Location</strong>
+            <span data-en="Brebes, Jawa Tengah" data-id="Brebes, Jawa Tengah">Brebes, Jawa Tengah</span>
+          </div>
+          <div class="lessons-meta-item">
+            <strong data-en="Delivery Method" data-id="Metode Pengajaran">Delivery Method</strong>
+            <span data-en="Private home visit" data-id="Kunjungan rumah privat">Private home visit</span>
+          </div>
+          <div class="lessons-meta-item">
+            <strong data-en="Materials Covered" data-id="Materi yang Diajarkan">Materials Covered</strong>
+            <span data-en="Word, Excel, PowerPoint, Design, Internet" data-id="Word, Excel, PowerPoint, Desain, Internet">Word, Excel, PowerPoint, Design, Internet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="cta reveal" id="contact">
-    <h2>Let's Build Something<br>Together.</h2>
-    <p>Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime.</p>
+    <h2 data-en="Let's Build Something<br>Together." data-id="Mari Buat Sesuatu<br>Bersama.">Let's Build Something<br>Together.</h2>
+    <p data-en="Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime."
+       data-id="Terbuka untuk proyek freelance, kolaborasi, dan peluang kreatif. Kirim pesan kapan saja.">Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime.</p>
     <div class="contact-grid">
       <a href="mailto:nendarpramelda2007@gmail.com" class="contact-card">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -371,12 +499,64 @@
     </div>
   </section>
 
+  <!-- FEATURE 3: COMMENTS SECTION (localStorage, no backend) -->
+  <section class="comments-section" id="comments">
+    <div class="comments-inner">
+      <div class="section-label" style="margin-bottom:12px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+        <span data-en="Leave a Comment" data-id="Tinggalkan Komentar">Leave a Comment</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom:32px;" data-en="Say<br><em>Hello</em>" data-id="Sapa<br><em>Kami</em>">Say<br><em>Hello</em></h2>
+
+      <div class="comment-form">
+        <div class="comment-form-row">
+          <input
+            type="text"
+            id="commentName"
+            class="comment-input"
+            maxlength="60"
+            data-en-placeholder="Your name"
+            data-id-placeholder="Nama Anda"
+            placeholder="Your name"
+          />
+          <input
+            type="email"
+            id="commentEmail"
+            class="comment-input"
+            maxlength="80"
+            data-en-placeholder="Your email (optional)"
+            data-id-placeholder="Email Anda (opsional)"
+            placeholder="Your email (optional)"
+          />
+        </div>
+        <textarea
+          id="commentText"
+          class="comment-textarea"
+          maxlength="500"
+          data-en-placeholder="Write your comment here..."
+          data-id-placeholder="Tulis komentar Anda di sini..."
+          placeholder="Write your comment here..."
+        ></textarea>
+        <button class="comment-submit" id="commentSubmit">
+          <span data-en="Post Comment" data-id="Kirim Komentar">Post Comment</span>
+        </button>
+      </div>
+
+      <div class="comments-list" id="commentsList"></div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="footer">
-    <span>Designed by <a href="#">Nendar Pramelda</a> — 2025</span>
-    <span>Graphic Designer &amp; AI Explorer</span>
+    <span data-en="Designed by" data-id="Dirancang oleh">Designed by</span>
+    <a href="#">Nendar Pramelda</a> — 2025 &nbsp;
+    <span data-en="Graphic Designer &amp; AI Explorer" data-id="Desainer Grafis &amp; AI Explorer">Graphic Designer &amp; AI Explorer</span>
   </footer>
 
+  <!-- JS asli (tidak diubah) -->
   <script src="script.js"></script>
+  <!-- JS tambahan untuk fitur baru -->
+  <script src="additions.js"></script>
+
 </body>
 </html>
