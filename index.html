@@ -1,58 +1,73 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nendar Pramelda — Graphic Designer</title>
+  <meta name="description" content="Nendar Pramelda — Graphic Designer & AI Explorer crafting impactful visual communication from Brebes, Indonesia.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- Stylesheet asli (tidak diubah) -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Stylesheet tambahan untuk fitur baru -->
-  <link rel="stylesheet" href="additions.css">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;700;900&family=Sora:wght@300;400;600;700&family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-anime.css">
 </head>
 <body>
 
-  <!-- POSTER MODAL -->
-  <div class="poster-modal" id="posterModal">
-    <div class="modal-close" id="modalClose">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-        <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>
-      </svg>
+  <!-- ═══════════════════════════════════════
+       LOADING SCREEN (first visit only)
+  ═══════════════════════════════════════ -->
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-ring loader-ring--2"></div>
+      <div class="loader-scan"></div>
+      <div class="loader-glyph">NP</div>
+      <div class="loader-kanji">創</div>
+      <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
     </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       POSTER MODAL
+  ═══════════════════════════════════════ -->
+  <div class="poster-modal" id="posterModal">
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
     <img class="modal-img" id="modalImg" src="" alt="Poster Preview">
   </div>
 
-  <!-- NAVBAR -->
-  <nav class="nav">
+  <!-- ═══════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
     <a href="#home" class="nav-logo">
-      <div class="nav-logo-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#f5c842" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-          <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      NP
+      <span class="nav-logo-mark">NP</span>
+      <span class="nav-logo-dot"></span>
     </a>
 
-    <div class="nav-toggle" id="navToggle">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
 
     <div class="nav-right">
-
-      <!-- FEATURE 4: Language Toggle EN / ID -->
+      <!-- Language Toggle -->
       <div class="lang-toggle" title="Switch language">
         <button class="lang-btn active" data-lang="en" id="langEN">EN</button>
-        <div class="lang-divider"></div>
+        <span class="lang-divider"></span>
         <button class="lang-btn" data-lang="id" id="langID">ID</button>
       </div>
 
-      <!-- Theme Toggle (tidak diubah) -->
+      <!-- Theme Toggle -->
       <div class="theme-toggle" title="Switch theme">
-        <button class="theme-btn t-light active" data-theme="light" title="Light mode">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round">
+        <button class="theme-btn t-dark active" data-theme="dark" title="Dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="theme-btn t-light" data-theme="light" title="Light mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
             <circle cx="12" cy="12" r="5"/>
             <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
@@ -60,12 +75,9 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
           </svg>
         </button>
-        <button class="theme-btn t-dark" data-theme="dark" title="Dark mode">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
+        <button class="theme-btn t-rgb" data-theme="rgb" title="RGB mode">
+          <span class="rgb-dot"></span>
         </button>
-        <button class="theme-btn t-rgb" data-theme="rgb" title="RGB mode"></button>
       </div>
 
       <ul class="nav-links" id="navLinks">
@@ -78,309 +90,359 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
   <section class="hero" id="home">
-    <div class="hero-left">
-      <div class="hero-tag">
-        <div class="hero-tag-dot"></div>
+    <!-- BG Grid -->
+    <div class="hero-grid-bg" aria-hidden="true">
+      <div class="hero-grid-lines"></div>
+      <div class="hero-glow hero-glow--1"></div>
+      <div class="hero-glow hero-glow--2"></div>
+      <div class="hero-glow hero-glow--3"></div>
+    </div>
+
+    <!-- Floating Kanji -->
+    <div class="hero-kanji-field" aria-hidden="true">
+      <span class="hk hk1">創</span>
+      <span class="hk hk2">美</span>
+      <span class="hk hk3">形</span>
+      <span class="hk hk4">光</span>
+      <span class="hk hk5">デザイン</span>
+    </div>
+
+    <!-- Hero Photo -->
+    <div class="hero-character" aria-hidden="true">
+      <div class="hero-photo-wrap">
+        <img src="assets/CV/foto.jpg" alt="Nendar Pramelda">
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-tag animate-fade-in" style="animation-delay:0.4s">
+        <span class="hero-tag-pulse"></span>
         <span data-en="Available for freelance work" data-id="Tersedia untuk kerja lepas">Available for freelance work</span>
       </div>
-      <h1>NENDAR<br><span class="highlight">PRAMELDA</span></h1>
-      <p class="hero-desc"
+      <h1 class="hero-title animate-slide-up" style="animation-delay:0.55s">
+        NENDAR<br><span class="hero-title-accent">PRAMELDA</span>
+      </h1>
+      <p class="hero-desc animate-fade-in" style="animation-delay:0.7s"
          data-en="Graphic Designer &amp; AI Explorer crafting impactful visual communication. Combining illustration, pattern design, and AI-assisted workflows to build modern design solutions."
          data-id="Desainer Grafis &amp; AI Explorer yang menciptakan komunikasi visual berkesan. Menggabungkan ilustrasi, desain pola, dan alur kerja berbasis AI untuk solusi desain modern.">
-        Graphic Designer &amp; AI Explorer crafting impactful visual communication.
-        Combining illustration, pattern design, and AI-assisted workflows to build modern design solutions.
+        Graphic Designer &amp; AI Explorer crafting impactful visual communication. Combining illustration, pattern design, and AI-assisted workflows to build modern design solutions.
       </p>
-      <div class="hero-buttons">
+      <div class="hero-buttons animate-fade-in" style="animation-delay:0.85s">
         <a href="#work" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-            <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
           <span data-en="View Projects" data-id="Lihat Proyek">View Projects</span>
         </a>
-        <a href="cv.html" class="btn btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
-          </svg>
+        <a href="cv.html" class="btn btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span data-en="View CV" data-id="Lihat CV">View CV</span>
         </a>
       </div>
-      <div class="hero-scroll-hint">
+      <div class="hero-stats animate-fade-in" style="animation-delay:1s">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label" data-en="Designs created" data-id="Desain dibuat">Designs created</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2+</span>
+          <span class="hero-stat-label" data-en="Years experience" data-id="Tahun pengalaman">Years experience</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">7+</span>
+          <span class="hero-stat-label" data-en="Tools mastered" data-id="Alat dikuasai">Tools mastered</span>
+        </div>
+      </div>
+      <div class="hero-scroll-hint animate-fade-in" style="animation-delay:1.2s">
         <span data-en="Scroll to explore" data-id="Gulir untuk menjelajah">Scroll to explore</span>
-        <span class="scroll-arrow">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
-          </svg>
-        </span>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="hero-card reveal">
-        <div class="hero-card-title" data-en="Experience" data-id="Pengalaman">Experience</div>
-        <div class="hero-card-stat">10+</div>
-        <div class="hero-card-sub" data-en="Production-ready designs created" data-id="Desain siap produksi telah dibuat">Production-ready designs created</div>
-      </div>
-      <div class="hero-avatar-area">
-        <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="80" cy="62" r="38" fill="#fde8d0" stroke="#1a1a2e" stroke-width="3"/>
-          <path d="M44 56 Q48 26 80 24 Q112 26 116 56" fill="#1a1a2e"/>
-          <ellipse cx="67" cy="60" rx="5" ry="6" fill="#1a1a2e"/>
-          <ellipse cx="93" cy="60" rx="5" ry="6" fill="#1a1a2e"/>
-          <circle cx="69" cy="58" r="1.5" fill="white"/>
-          <circle cx="95" cy="58" r="1.5" fill="white"/>
-          <path d="M60 50 Q67 46 74 50" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M86 50 Q93 46 100 50" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <ellipse cx="80" cy="70" rx="3" ry="2" fill="#f0c8a0"/>
-          <path d="M68 78 Q80 88 92 78" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <rect x="54" y="98" width="52" height="52" rx="12" fill="#ff6b6b" stroke="#1a1a2e" stroke-width="3"/>
-          <path d="M70 98 L80 112 L90 98" fill="white" stroke="#1a1a2e" stroke-width="2.5" stroke-linejoin="round"/>
-          <rect x="100" y="108" width="8" height="30" rx="4" fill="#f5c842" stroke="#1a1a2e" stroke-width="2.5" transform="rotate(-20, 104, 120)"/>
-          <circle cx="106" cy="136" r="4" fill="#1a1a2e"/>
-          <rect x="38" y="100" width="18" height="36" rx="9" fill="#fde8d0" stroke="#1a1a2e" stroke-width="3"/>
-        </svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- Section Divider -->
+  <div class="section-divider" aria-hidden="true"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,40 L1440,0 L1440,40Z" fill="var(--surface-2)"/></svg></div>
+
+  <!-- ═══════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════ -->
   <section class="about reveal" id="about">
-    <div class="section-label">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-      <span data-en="About Me" data-id="Tentang Saya">About Me</span>
-    </div>
-    <div class="about-grid">
-      <div class="speech-bubble">
-        <h2 data-en="Hey There,<br>I'm Nendar." data-id="Halo,<br>Saya Nendar.">Hey There,<br>I'm Nendar.</h2>
-        <p data-en="I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia."
-           data-id="Saya Desainer Grafis dengan dasar kuat dalam ilustrasi, desain pola, dan produksi cetak — termasuk pengalaman langsung ilustrasi aset batik di CV Batik Papua Indonesia.">I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia.</p>
-        <p data-en="Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design."
-           data-id="Saat ini menempuh pendidikan D4 Manajemen Bisnis dan Retail di Politeknik STIBISNIS Tegal, saya memadukan visual storytelling dengan alur kerja kreatif berbasis AI untuk menghasilkan desain yang efisien, modern, dan berdampak.">Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design.</p>
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="eyebrow-kanji">について</span>
+        <span data-en="About Me" data-id="Tentang Saya">About Me</span>
       </div>
-      <div class="about-panels">
-        <div class="about-panel reveal reveal-delay-1">
-          <div class="about-panel-icon" style="background:#fff0f0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01z"/>
-            </svg>
-          </div>
-          <h3 data-en="Illustration &amp; Pattern Specialist" data-id="Spesialis Ilustrasi &amp; Pola">Illustration &amp; Pattern Specialist</h3>
-          <p data-en="Batik motifs &amp; digital illustration" data-id="Motif batik &amp; ilustrasi digital">Batik motifs &amp; digital illustration</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-heading" data-en="Hey,<br>I'm <em>Nendar</em>." data-id="Halo,<br>Saya <em>Nendar</em>.">Hey,<br>I'm <em>Nendar</em>.</h2>
+          <p data-en="I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia."
+             data-id="Saya Desainer Grafis dengan dasar kuat dalam ilustrasi, desain pola, dan produksi cetak — termasuk pengalaman langsung ilustrasi aset batik di CV Batik Papua Indonesia.">
+            I'm a Graphic Designer with a strong foundation in illustration, pattern design, and print production — including hands-on batik asset illustration experience at CV Batik Papua Indonesia.
+          </p>
+          <p data-en="Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design."
+             data-id="Saat ini menempuh pendidikan D4 Manajemen Bisnis dan Retail di Politeknik STIBISNIS Tegal, saya memadukan visual storytelling dengan alur kerja kreatif berbasis AI untuk menghasilkan desain yang efisien, modern, dan berdampak.">
+            Currently pursuing a D4 degree in Business and Retail Management at Politeknik STIBISNIS Tegal, I merge visual storytelling with AI-assisted creative workflows to deliver efficient, modern, and impactful design.
+          </p>
         </div>
-        <div class="about-panel reveal reveal-delay-2">
-          <div class="about-panel-icon" style="background:#f0fff8;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-            </svg>
+        <div class="about-panels">
+          <div class="about-panel reveal reveal-delay-1">
+            <div class="about-panel-icon icon-coral">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+            </div>
+            <h3 data-en="Illustration &amp; Pattern" data-id="Ilustrasi &amp; Pola">Illustration &amp; Pattern</h3>
+            <p data-en="Batik motifs &amp; digital art" data-id="Motif batik &amp; seni digital">Batik motifs &amp; digital art</p>
           </div>
-          <h3 data-en="Print Production Experience" data-id="Pengalaman Produksi Cetak">Print Production Experience</h3>
-          <p data-en="Production-ready artwork &amp; layouts" data-id="Karya &amp; tata letak siap produksi">Production-ready artwork &amp; layouts</p>
-        </div>
-        <div class="about-panel reveal reveal-delay-3">
-          <div class="about-panel-icon" style="background:#fffbf0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-            </svg>
+          <div class="about-panel reveal reveal-delay-2">
+            <div class="about-panel-icon icon-mint">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3 data-en="Print Production" data-id="Produksi Cetak">Print Production</h3>
+            <p data-en="Production-ready artwork" data-id="Karya siap produksi">Production-ready artwork</p>
           </div>
-          <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
-          <p data-en="Tools that speed up creative output" data-id="Alat yang mempercepat output kreatif">Tools that speed up creative output</p>
-        </div>
-        <div class="about-panel reveal reveal-delay-4">
-          <div class="about-panel-icon" style="background:#f5f0ff;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--lavender)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
+          <div class="about-panel reveal reveal-delay-3">
+            <div class="about-panel-icon icon-violet">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
+            <p data-en="Faster, smarter output" data-id="Output lebih cepat &amp; cerdas">Faster, smarter output</p>
           </div>
-          <h3 data-en="Active Freelancer" data-id="Freelancer Aktif">Active Freelancer</h3>
-          <p data-en="Brand, poster &amp; campaign design" data-id="Desain brand, poster &amp; kampanye">Brand, poster &amp; campaign design</p>
+          <div class="about-panel reveal reveal-delay-4">
+            <div class="about-panel-icon icon-gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3 data-en="Active Freelancer" data-id="Freelancer Aktif">Active Freelancer</h3>
+            <p data-en="Brand, poster &amp; campaigns" data-id="Brand, poster &amp; kampanye">Brand, poster &amp; campaigns</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CAPABILITIES -->
+  <!-- Section Divider -->
+  <div class="section-divider flip" aria-hidden="true"><svg viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,0 L1440,40 L0,40Z" fill="var(--surface-2)"/></svg></div>
+
+  <!-- ═══════════════════════════════════════
+       CAPABILITIES
+  ═══════════════════════════════════════ -->
   <section class="capabilities reveal" id="capabilities">
-    <div class="section-header">
-      <div>
-        <div class="section-label" data-en="What I Do" data-id="Yang Saya Kerjakan">What I Do</div>
-        <h2 class="section-title" data-en="Core<br><em>Capabilities</em>" data-id="Keahlian<br><em>Utama</em>">Core<br><em>Capabilities</em></h2>
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="eyebrow-kanji">能力</span>
+        <span data-en="What I Do" data-id="Yang Saya Kerjakan">What I Do</span>
       </div>
-    </div>
-    <div class="cap-grid">
-      <div class="cap-card reveal reveal-delay-1">
-        <div class="cap-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
-            <path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>
-          </svg>
+      <h2 class="section-heading" data-en="Core <em>Capabilities</em>" data-id="Keahlian <em>Utama</em>">Core <em>Capabilities</em></h2>
+      <div class="cap-grid">
+        <div class="cap-card reveal reveal-delay-1">
+          <div class="cap-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <span class="cap-num">01</span>
+          <h3 data-en="Illustration &amp; Pattern Design" data-id="Ilustrasi &amp; Desain Pola">Illustration &amp; Pattern Design</h3>
+          <p data-en="Illustration assets and pattern work, including intricate batik motifs and digital art." data-id="Aset ilustrasi dan karya pola, termasuk motif batik yang rumit dan seni digital.">Illustration assets and pattern work, including intricate batik motifs and digital art.</p>
         </div>
-        <h3 data-en="Illustration &amp; Pattern Design" data-id="Ilustrasi &amp; Desain Pola">Illustration &amp; Pattern Design</h3>
-        <p data-en="Illustration assets and pattern work, including intricate batik motifs and digital art." data-id="Aset ilustrasi dan karya pola, termasuk motif batik yang rumit dan seni digital.">Illustration assets and pattern work, including intricate batik motifs and digital art.</p>
-      </div>
-      <div class="cap-card reveal reveal-delay-2">
-        <div class="cap-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
-            <rect x="6" y="14" width="12" height="8" rx="1"/>
-          </svg>
+        <div class="cap-card reveal reveal-delay-2">
+          <div class="cap-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+          </div>
+          <span class="cap-num">02</span>
+          <h3 data-en="Print Design Production" data-id="Produksi Desain Cetak">Print Design Production</h3>
+          <p data-en="Print-ready layouts with production awareness — from sizing to color separation." data-id="Tata letak siap cetak dengan pemahaman produksi — dari ukuran hingga pemisahan warna.">Print-ready layouts with production awareness — from sizing to color separation.</p>
         </div>
-        <h3 data-en="Print Design Production" data-id="Produksi Desain Cetak">Print Design Production</h3>
-        <p data-en="Print-ready layouts with production awareness — from sizing to color separation." data-id="Tata letak siap cetak dengan pemahaman produksi — dari ukuran hingga pemisahan warna.">Print-ready layouts with production awareness — from sizing to color separation.</p>
-      </div>
-      <div class="cap-card reveal reveal-delay-3">
-        <div class="cap-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-            <line x1="12" y1="22.08" x2="12" y2="12"/>
-          </svg>
+        <div class="cap-card reveal reveal-delay-3">
+          <div class="cap-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <span class="cap-num">03</span>
+          <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
+          <p data-en="Integrating AI tools to improve speed, creativity, and visual output quality." data-id="Mengintegrasikan alat AI untuk meningkatkan kecepatan, kreativitas, dan kualitas visual.">Integrating AI tools to improve speed, creativity, and visual output quality.</p>
         </div>
-        <h3 data-en="AI-Assisted Workflow" data-id="Alur Kerja Berbasis AI">AI-Assisted Workflow</h3>
-        <p data-en="Integrating AI tools to improve speed, creativity, and visual output quality." data-id="Mengintegrasikan alat AI untuk meningkatkan kecepatan, kreativitas, dan kualitas visual.">Integrating AI tools to improve speed, creativity, and visual output quality.</p>
-      </div>
-      <div class="cap-card reveal reveal-delay-4">
-        <div class="cap-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M9 9h6M9 12h6M9 15h4"/>
-          </svg>
+        <div class="cap-card reveal reveal-delay-4">
+          <div class="cap-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <span class="cap-num">04</span>
+          <h3 data-en="Freelance Visual Design" data-id="Desain Visual Freelance">Freelance Visual Design</h3>
+          <p data-en="Posters, promotional visuals, and campaign graphics for clients across industries." data-id="Poster, visual promosi, dan grafik kampanye untuk klien dari berbagai industri.">Posters, promotional visuals, and campaign graphics for clients across industries.</p>
         </div>
-        <h3 data-en="Freelance Visual Design" data-id="Desain Visual Freelance">Freelance Visual Design</h3>
-        <p data-en="Posters, promotional visuals, and campaign graphics for clients across industries." data-id="Poster, visual promosi, dan grafik kampanye untuk klien dari berbagai industri.">Posters, promotional visuals, and campaign graphics for clients across industries.</p>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ═══════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════ -->
   <section class="projects" id="work">
-    <div class="projects-header">
-      <div>
-        <div class="section-label" style="background:var(--coral); border-color:var(--projects-title);" data-en="My Work" data-id="Karya Saya">My Work</div>
-        <h2 class="section-title" data-en="Project<br><em>Gallery</em>" data-id="Galeri<br><em>Proyek</em>">Project<br><em>Gallery</em></h2>
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="eyebrow-kanji">作品</span>
+        <span data-en="My Work" data-id="Karya Saya">My Work</span>
       </div>
+      <h2 class="section-heading" data-en="Project <em>Gallery</em>" data-id="Galeri <em>Proyek</em>">Project <em>Gallery</em></h2>
     </div>
 
+    <!-- Marquee 1 -->
     <div class="marquee-container">
       <div class="marquee-track" id="track1">
-        <img src="assets/ANTA KAI 2.jpg"                                class="poster-item marquee-item" alt="Anta Kai">
-        <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png"      class="poster-item marquee-item" alt="Project">
-        <img src="assets/ASDASDADS.jpg"                                 class="poster-item marquee-item" alt="Project">
-        <img src="assets/REDMI-WATCH-5_02.jpg"                          class="poster-item marquee-item" alt="Redmi Watch">
-        <img src="assets/BEQU.jpg"                                      class="poster-item marquee-item" alt="Bequ">
-        <img src="assets/COSPLAYER copy.jpg"                            class="poster-item marquee-item" alt="Cosplayer">
-        <img src="assets/DIMSUM copy.jpg"                               class="poster-item marquee-item" alt="Dimsum">
-        <img src="assets/ESKRIM copy.jpg"                               class="poster-item marquee-item" alt="Ice Cream">
-        <img src="assets/TRIP_02.jpg"                                   class="poster-item marquee-item" alt="Trip">
-        <!-- duplicates -->
-        <img src="assets/ANTA KAI 2.jpg"                                class="poster-item marquee-item" alt="Anta Kai">
-        <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png"      class="poster-item marquee-item" alt="Project">
-        <img src="assets/ASDASDADS.jpg"                                 class="poster-item marquee-item" alt="Project">
-        <img src="assets/REDMI-WATCH-5_02.jpg"                          class="poster-item marquee-item" alt="Redmi Watch">
-        <img src="assets/BEQU.jpg"                                      class="poster-item marquee-item" alt="Bequ">
-        <img src="assets/COSPLAYER copy.jpg"                            class="poster-item marquee-item" alt="Cosplayer">
-        <img src="assets/DIMSUM copy.jpg"                               class="poster-item marquee-item" alt="Dimsum">
-        <img src="assets/ESKRIM copy.jpg"                               class="poster-item marquee-item" alt="Ice Cream">
-        <img src="assets/TRIP_02.jpg"                                   class="poster-item marquee-item" alt="Trip">
+        <img src="assets/ANTA KAI 2.jpg" class="poster-item marquee-item" alt="Anta Kai">
+        <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png" class="poster-item marquee-item" alt="Project">
+        <img src="assets/ASDASDADS.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item marquee-item" alt="Redmi Watch">
+        <img src="assets/BEQU.jpg" class="poster-item marquee-item" alt="Bequ">
+        <img src="assets/COSPLAYER copy.jpg" class="poster-item marquee-item" alt="Cosplayer">
+        <img src="assets/DIMSUM copy.jpg" class="poster-item marquee-item" alt="Dimsum">
+        <img src="assets/ESKRIM copy.jpg" class="poster-item marquee-item" alt="Ice Cream">
+        <img src="assets/TRIP_02.jpg" class="poster-item marquee-item" alt="Trip">
+        <img src="assets/ANTA KAI 2.jpg" class="poster-item marquee-item" alt="Anta Kai">
+        <img src="assets/09fd3f23-3c08-48ee-9519-3b116242c2ec.png" class="poster-item marquee-item" alt="Project">
+        <img src="assets/ASDASDADS.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/REDMI-WATCH-5_02.jpg" class="poster-item marquee-item" alt="Redmi Watch">
+        <img src="assets/BEQU.jpg" class="poster-item marquee-item" alt="Bequ">
+        <img src="assets/COSPLAYER copy.jpg" class="poster-item marquee-item" alt="Cosplayer">
+        <img src="assets/DIMSUM copy.jpg" class="poster-item marquee-item" alt="Dimsum">
+        <img src="assets/ESKRIM copy.jpg" class="poster-item marquee-item" alt="Ice Cream">
+        <img src="assets/TRIP_02.jpg" class="poster-item marquee-item" alt="Trip">
       </div>
     </div>
-
     <div class="marquee-container">
       <div class="marquee-track reverse" id="track2">
-        <img src="assets/521736339_1710130289864752_3872638669566507834_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/525932616_1091707736240608_5085026724244860056_n.jpg"  class="poster-item marquee-item" alt="Project">
+        <img src="assets/521736339_1710130289864752_3872638669566507834_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/525932616_1091707736240608_5085026724244860056_n.jpg" class="poster-item marquee-item" alt="Project">
         <img src="assets/527582568_24578699005088192_5016361706669429502_n.jpg" class="poster-item marquee-item" alt="Project">
-        <img src="assets/528654520_1258333475458907_8159532654033170657_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/529022613_1487128925757593_7803198535776308041_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/531288811_1703319683705694_7258384510506260000_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/531308288_2448050895594505_107727910456987068_n.jpg"   class="poster-item marquee-item" alt="Project">
-        <img src="assets/531314878_1818072069059443_6437318245310995514_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <!-- duplicates -->
-        <img src="assets/521736339_1710130289864752_3872638669566507834_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/525932616_1091707736240608_5085026724244860056_n.jpg"  class="poster-item marquee-item" alt="Project">
+        <img src="assets/528654520_1258333475458907_8159532654033170657_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/529022613_1487128925757593_7803198535776308041_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531288811_1703319683705694_7258384510506260000_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531308288_2448050895594505_107727910456987068_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531314878_1818072069059443_6437318245310995514_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/521736339_1710130289864752_3872638669566507834_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/525932616_1091707736240608_5085026724244860056_n.jpg" class="poster-item marquee-item" alt="Project">
         <img src="assets/527582568_24578699005088192_5016361706669429502_n.jpg" class="poster-item marquee-item" alt="Project">
-        <img src="assets/528654520_1258333475458907_8159532654033170657_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/529022613_1487128925757593_7803198535776308041_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/531288811_1703319683705694_7258384510506260000_n.jpg"  class="poster-item marquee-item" alt="Project">
-        <img src="assets/531308288_2448050895594505_107727910456987068_n.jpg"   class="poster-item marquee-item" alt="Project">
-        <img src="assets/531314878_1818072069059443_6437318245310995514_n.jpg"  class="poster-item marquee-item" alt="Project">
+        <img src="assets/528654520_1258333475458907_8159532654033170657_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/529022613_1487128925757593_7803198535776308041_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531288811_1703319683705694_7258384510506260000_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531308288_2448050895594505_107727910456987068_n.jpg" class="poster-item marquee-item" alt="Project">
+        <img src="assets/531314878_1818072069059443_6437318245310995514_n.jpg" class="poster-item marquee-item" alt="Project">
       </div>
     </div>
 
-    <!-- Featured Project Cards -->
-    <div class="project-cards">
-      <div class="project-card reveal">
-        <img src="assets/548903224_18090795742698267_4234607956614984106_n.jpg"
-             class="project-card-img" alt="Manipulate Poster Design">
-        <div class="project-card-body">
-          <span class="project-card-tag" data-en="Poster Design" data-id="Desain Poster">Poster Design</span>
-          <h3 data-en="Manipulate Poster Design" data-id="Desain Poster Manipulasi">Manipulate Poster Design</h3>
-          <p data-en="A conceptual poster exploration focused on visual manipulation — combining imagery, color contrast, and composition to create strong visual impact. Emphasizes mood, depth, and experimental layout."
-             data-id="Eksplorasi poster konseptual yang berfokus pada manipulasi visual — menggabungkan gambar, kontras warna, dan komposisi untuk menciptakan dampak visual yang kuat.">A conceptual poster exploration focused on visual manipulation — combining imagery, color contrast, and composition to create strong visual impact. Emphasizes mood, depth, and experimental layout.</p>
-        </div>
-      </div>
-      <div class="project-card reveal reveal-delay-2">
-        <img src="assets/REDMI-WATCH-5_02.jpg"
-             class="project-card-img" alt="Minimalist Design Style">
-        <div class="project-card-body">
-          <span class="project-card-tag" data-en="Product Visual" data-id="Visual Produk">Product Visual</span>
-          <h3 data-en="Minimalist Design Style" data-id="Gaya Desain Minimalis">Minimalist Design Style</h3>
-          <p data-en="A clean, balanced layout using white space and simple typography. A neutral color palette with subtle contrasting accents highlights the product without excessive visual elements."
-             data-id="Tata letak bersih dan seimbang menggunakan ruang putih dan tipografi sederhana. Palet warna netral dengan aksen kontras halus menonjolkan produk tanpa elemen visual berlebihan.">A clean, balanced layout using white space and simple typography. A neutral color palette with subtle contrasting accents highlights the product without excessive visual elements.</p>
-        </div>
+    <!-- Featured Case Studies -->
+    <div class="container">
+      <div class="project-cards">
+        <article class="project-card reveal">
+          <div class="project-card-img-wrap">
+            <img src="assets/548903224_18090795742698267_4234607956614984106_n.jpg" class="project-card-img" alt="Manipulate Poster Design">
+            <div class="project-card-overlay">
+              <span class="project-tag" data-en="Poster Design" data-id="Desain Poster">Poster Design</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3 data-en="Manipulate Poster Design" data-id="Desain Poster Manipulasi">Manipulate Poster Design</h3>
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-label">Problem</span>
+                <p data-en="Needed a visually striking poster that communicates mood and concept without relying on text." data-id="Membutuhkan poster yang mencolok secara visual untuk mengkomunikasikan suasana tanpa teks.">Needed a visually striking poster that communicates mood and concept without relying on text.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Process</span>
+                <p data-en="Blended imagery, dramatic color contrast, and experimental composition techniques in Photoshop." data-id="Menggabungkan gambar, kontras warna dramatis, dan teknik komposisi eksperimental di Photoshop.">Blended imagery, dramatic color contrast, and experimental composition techniques in Photoshop.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Result</span>
+                <p data-en="A conceptual piece with strong visual impact, depth, and narrative atmosphere." data-id="Karya konseptual dengan dampak visual kuat, kedalaman, dan atmosfer naratif.">A conceptual piece with strong visual impact, depth, and narrative atmosphere.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Tools</span>
+                <div class="case-tools">
+                  <span class="tool-pill">Photoshop</span>
+                  <span class="tool-pill">Lightroom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-2">
+          <div class="project-card-img-wrap">
+            <img src="assets/REDMI-WATCH-5_02.jpg" class="project-card-img" alt="Minimalist Design Style">
+            <div class="project-card-overlay">
+              <span class="project-tag" data-en="Product Visual" data-id="Visual Produk">Product Visual</span>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <h3 data-en="Minimalist Design Style" data-id="Gaya Desain Minimalis">Minimalist Design Style</h3>
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-label">Problem</span>
+                <p data-en="Required a product visual that highlights the item without noisy backgrounds or overdesign." data-id="Dibutuhkan visual produk yang menonjolkan item tanpa latar yang ramai.">Required a product visual that highlights the item without noisy backgrounds or overdesign.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Process</span>
+                <p data-en="Applied generous white space, minimal typography, and a neutral palette with subtle accent highlights." data-id="Menerapkan ruang putih luas, tipografi minimal, dan palet netral dengan aksen halus.">Applied generous white space, minimal typography, and a neutral palette with subtle accent highlights.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Result</span>
+                <p data-en="Clean, balanced product shot ready for digital and print marketing materials." data-id="Foto produk bersih dan seimbang, siap untuk materi marketing digital dan cetak.">Clean, balanced product shot ready for digital and print marketing materials.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-label">Tools</span>
+                <div class="case-tools">
+                  <span class="tool-pill">Photoshop</span>
+                  <span class="tool-pill">Canva</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- TOOLS -->
+  <!-- ═══════════════════════════════════════
+       TOOLS
+  ═══════════════════════════════════════ -->
   <section class="tools reveal" id="tools">
-    <div class="section-header" style="text-align:center; flex-direction:column; align-items:center;">
-      <div class="section-label" data-en="My Arsenal" data-id="Perangkat Saya">My Arsenal</div>
-      <h2 class="section-title" data-en="Tools &amp; <em>Software</em>" data-id="Alat &amp; <em>Perangkat Lunak</em>">Tools &amp; <em>Software</em></h2>
-    </div>
-    <div class="tools-grid">
-      <div class="tool-card reveal reveal-delay-1"><img src="assets/tools/photoshop.png" alt="Photoshop"><span>Photoshop</span></div>
-      <div class="tool-card reveal reveal-delay-1"><img src="assets/tools/lightroom.png" alt="Lightroom"><span>Lightroom</span></div>
-      <div class="tool-card reveal reveal-delay-2"><img src="assets/tools/canva.png" alt="Canva"><span>Canva</span></div>
-      <div class="tool-card reveal reveal-delay-2"><img src="assets/tools/coreldraw.png" alt="CorelDraw"><span>CorelDraw</span></div>
-      <div class="tool-card reveal reveal-delay-3"><img src="assets/tools/illustrator.png" alt="Illustrator"><span>Illustrator</span></div>
-      <div class="tool-card reveal reveal-delay-3"><img src="assets/tools/ibispaint.png" alt="Ibis Paint"><span>Ibis Paint</span></div>
-      <div class="tool-card reveal reveal-delay-4"><img src="assets/tools/procreate.png" alt="Procreate"><span>Procreate</span></div>
-      <div class="tool-card reveal reveal-delay-4"><img src="assets/tools/word.png" alt="Word"><span>Word</span></div>
-      <div class="tool-card reveal"><img src="assets/tools/excell.png" alt="Excel"><span>Excel</span></div>
-      <div class="tool-card reveal"><img src="assets/tools/ppt.png" alt="PowerPoint"><span>PowerPoint</span></div>
-      <div class="tool-card reveal"><img src="assets/tools/gemini.png" alt="Gemini"><span>Gemini</span></div>
-      <div class="tool-card reveal"><img src="assets/tools/gpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
-      <div class="tool-card reveal"><img src="assets/tools/claude.png" alt="Claude.AI"><span>Claude.AI</span></div>
+    <div class="container">
+      <div class="section-eyebrow" style="justify-content:center">
+        <span class="eyebrow-kanji">道具</span>
+        <span data-en="My Arsenal" data-id="Perangkat Saya">My Arsenal</span>
+      </div>
+      <h2 class="section-heading text-center" data-en="Tools &amp; <em>Software</em>" data-id="Alat &amp; <em>Perangkat Lunak</em>">Tools &amp; <em>Software</em></h2>
+      <div class="tools-grid">
+        <div class="tool-card reveal reveal-delay-1"><img src="assets/tools/photoshop.png" alt="Photoshop"><span>Photoshop</span></div>
+        <div class="tool-card reveal reveal-delay-1"><img src="assets/tools/lightroom.png" alt="Lightroom"><span>Lightroom</span></div>
+        <div class="tool-card reveal reveal-delay-2"><img src="assets/tools/canva.png" alt="Canva"><span>Canva</span></div>
+        <div class="tool-card reveal reveal-delay-2"><img src="assets/tools/coreldraw.png" alt="CorelDraw"><span>CorelDraw</span></div>
+        <div class="tool-card reveal reveal-delay-3"><img src="assets/tools/illustrator.png" alt="Illustrator"><span>Illustrator</span></div>
+        <div class="tool-card reveal reveal-delay-3"><img src="assets/tools/ibispaint.png" alt="Ibis Paint"><span>Ibis Paint</span></div>
+        <div class="tool-card reveal reveal-delay-4"><img src="assets/tools/procreate.png" alt="Procreate"><span>Procreate</span></div>
+        <div class="tool-card reveal reveal-delay-4"><img src="assets/tools/word.png" alt="Word"><span>Word</span></div>
+        <div class="tool-card reveal"><img src="assets/tools/excell.png" alt="Excel"><span>Excel</span></div>
+        <div class="tool-card reveal"><img src="assets/tools/ppt.png" alt="PowerPoint"><span>PowerPoint</span></div>
+        <div class="tool-card reveal"><img src="assets/tools/gemini.png" alt="Gemini"><span>Gemini</span></div>
+        <div class="tool-card reveal"><img src="assets/tools/gpt.png" alt="ChatGPT"><span>ChatGPT</span></div>
+        <div class="tool-card reveal"><img src="assets/tools/claude.png" alt="Claude.AI"><span>Claude.AI</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- FEATURE 1: SERVICES SECTION -->
+  <!-- ═══════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════ -->
   <section class="services reveal" id="services">
-    <div class="services-inner">
-      <div class="section-header" style="margin-bottom:0;">
-        <div>
-          <div class="section-label" data-en="What I Offer" data-id="Yang Saya Tawarkan">What I Offer</div>
-          <h2 class="section-title" data-en="My<br><em>Services</em>" data-id="Layanan<br><em>Saya</em>">My<br><em>Services</em></h2>
-        </div>
+    <div class="container">
+      <div class="section-eyebrow">
+        <span class="eyebrow-kanji">サービス</span>
+        <span data-en="What I Offer" data-id="Yang Saya Tawarkan">What I Offer</span>
       </div>
+      <h2 class="section-heading" data-en="My <em>Services</em>" data-id="Layanan <em>Saya</em>">My <em>Services</em></h2>
       <div class="services-grid">
 
-        <!-- A: Graphic Design -->
         <div class="service-card reveal reveal-delay-1">
-          <div class="service-card-icon" style="background:#fff0f0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/>
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
-            </svg>
+          <div class="service-card-icon icon-coral">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
           </div>
           <h3 data-en="Graphic Design" data-id="Desain Grafis">Graphic Design</h3>
           <ul>
@@ -391,12 +453,9 @@
           </ul>
         </div>
 
-        <!-- B: Wedding Invitation -->
         <div class="service-card reveal reveal-delay-2">
-          <div class="service-card-icon" style="background:#f0fff8;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
+          <div class="service-card-icon icon-mint">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
           <h3 data-en="Wedding Invitation Design" data-id="Desain Undangan Pernikahan">Wedding Invitation Design</h3>
           <ul>
@@ -406,14 +465,9 @@
           </ul>
         </div>
 
-        <!-- C: Academic Assistance -->
         <div class="service-card reveal reveal-delay-3">
-          <div class="service-card-icon" style="background:#fffbf0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--yellow)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
-            </svg>
+          <div class="service-card-icon icon-violet">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
           </div>
           <h3 data-en="Academic Assistance" data-id="Bantuan Akademik">Academic Assistance</h3>
           <ul>
@@ -427,26 +481,25 @@
     </div>
   </section>
 
-  <!-- FEATURE 2: PRIVATE LESSONS SECTION -->
+  <!-- ═══════════════════════════════════════
+       PRIVATE LESSONS
+  ═══════════════════════════════════════ -->
   <section class="lessons reveal" id="lessons">
-    <div class="lessons-inner">
+    <div class="container">
       <div class="lessons-box">
-        <div>
-          <div class="lessons-label" data-en="Brebes Area Only" data-id="Khusus Area Brebes">Brebes Area Only</div>
+        <div class="lessons-content">
+          <span class="lessons-badge" data-en="Brebes Area Only" data-id="Khusus Area Brebes">Brebes Area Only</span>
           <h2 data-en="Private Computer<br>Lessons" data-id="Kursus Komputer<br>Privat">Private Computer<br>Lessons</h2>
-          <p class="lessons-subtitle"
-             data-en="Hands-on, one-on-one computer lessons for students from elementary through high school level. Home visit system available within the Brebes area."
+          <p data-en="Hands-on, one-on-one computer lessons for students from elementary through high school level. Home visit system available within the Brebes area."
              data-id="Pelajaran komputer tatap muka untuk siswa dari SD hingga SMA. Tersedia sistem kunjungan rumah di area Brebes.">Hands-on, one-on-one computer lessons for students from elementary through high school level. Home visit system available within the Brebes area.</p>
-          <ul class="lessons-detail-list">
+          <ul class="lessons-list">
             <li data-en="Microsoft Word, Excel, and PowerPoint" data-id="Microsoft Word, Excel, dan PowerPoint">Microsoft Word, Excel, and PowerPoint</li>
             <li data-en="Basic graphic design fundamentals" data-id="Dasar-dasar desain grafis">Basic graphic design fundamentals</li>
             <li data-en="Internet and digital literacy basics" data-id="Dasar literasi internet dan digital">Internet and digital literacy basics</li>
             <li data-en="For Elementary to High School students" data-id="Untuk siswa SD hingga SMA">For Elementary to High School students</li>
           </ul>
-          <a href="https://wa.me/6289666863079" target="_blank" rel="noopener" class="lessons-cta">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
+          <a href="https://wa.me/6289666863079" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span data-en="Enquire via WhatsApp" data-id="Tanya via WhatsApp">Enquire via WhatsApp</span>
           </a>
         </div>
@@ -472,49 +525,65 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="cta reveal" id="contact">
-    <h2 data-en="Let's Build Something<br>Together." data-id="Mari Buat Sesuatu<br>Bersama.">Let's Build Something<br>Together.</h2>
-    <p data-en="Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime."
-       data-id="Terbuka untuk proyek freelance, kolaborasi, dan peluang kreatif. Kirim pesan kapan saja.">Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime.</p>
-    <div class="contact-grid">
-      <a href="mailto:nendarpramelda2007@gmail.com" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        Email
-      </a>
-      <a href="https://wa.me/6289666863079" target="_blank" rel="noopener" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-        WhatsApp
-      </a>
-      <a href="https://instagram.com/np_prinz/" target="_blank" rel="noopener" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
-        Instagram
-      </a>
+  <!-- ═══════════════════════════════════════
+       COMMENTS
+  ═══════════════════════════════════════ -->
+  <section class="comments-section reveal" id="comments">
+    <div class="container" style="max-width:760px">
+      <div class="section-eyebrow">
+        <span class="eyebrow-kanji">声</span>
+        <span data-en="Comments" data-id="Komentar">Comments</span>
+      </div>
+      <div id="disqus_thread"></div>
     </div>
   </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+  <!-- ═══════════════════════════════════════
+       CONTACT / CTA
+  ═══════════════════════════════════════ -->
+  <section class="cta reveal" id="contact">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="container cta-inner">
+      <div class="section-eyebrow" style="justify-content:center">
+        <span class="eyebrow-kanji">連絡</span>
+        <span data-en="Get in Touch" data-id="Hubungi">Get in Touch</span>
+      </div>
+      <h2 data-en="Let's Build Something<br><em>Together.</em>" data-id="Mari Buat Sesuatu<br><em>Bersama.</em>">Let's Build Something<br><em>Together.</em></h2>
+      <p data-en="Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime."
+         data-id="Terbuka untuk proyek freelance, kolaborasi, dan peluang kreatif. Kirim pesan kapan saja.">Open to freelance projects, collaborations, and creative opportunities. Drop a message anytime.</p>
+      <div class="contact-grid">
+        <a href="/cdn-cgi/l/email-protection#264843484247545654474b434a42471416161166414b474f4a0845494b" class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Email</span>
+        </a>
+        <a href="https://wa.me/6289666863079" target="_blank" rel="noopener" class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://instagram.com/np_prinz/" target="_blank" rel="noopener" class="contact-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">NP</span>
       <span data-en="Designed by Nendar Pramelda — 2025 · Graphic Designer &amp; AI Explorer"
             data-id="Dirancang oleh Nendar Pramelda — 2025 · Desainer Grafis &amp; AI Explorer">
         Designed by <a href="#">Nendar Pramelda</a> — 2025 · Graphic Designer &amp; AI Explorer
       </span>
-    </footer>
+      <div class="footer-kanji" aria-hidden="true">創</div>
+    </div>
+  </footer>
 
-  <!-- JS asli (tidak diubah) -->
-  <script src="script.js"></script>
-  <!-- JS tambahan untuk fitur baru -->
-  <script src="additions.js"></script>
+  <!-- Cursor splash elements injected by JS -->
 
+  <script src="script-anime.js"></script>
 </body>
 </html>
-
